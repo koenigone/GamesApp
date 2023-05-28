@@ -10,7 +10,7 @@ import {
   Text,
   CardFooter,
 } from "@chakra-ui/react";
-import './GameCard.css'
+import "./GameCard.css";
 
 interface Prorps {
   game: Games;
@@ -23,7 +23,9 @@ function GameCard({ game }: Prorps) {
         <Image src={getCroppedImageUrl(game.background_image)} />
         <CardBody>
           <Heading fontSize={"2xl"}>{game.name}</Heading>
-          <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)} />
+          <PlatformIconList
+            platforms={game.parent_platforms.map((p) => p.platform)}
+          />
         </CardBody>
         <CardFooter justifyContent={"space-between"}>
           <Text className="releaseDate">{game.released}</Text>
