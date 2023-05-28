@@ -28,8 +28,7 @@ function GameCard({ game }: Prorps) {
           />
         </CardBody>
         <CardFooter justifyContent={"space-between"}>
-          <Text colorScheme="">{game.released}</Text>
-          {/* <Text className="metacritic">{game.metacritic}</Text> */}
+          <Text colorScheme="cyan">{game.released}</Text>
           <CriticScore score={game.metacritic} />
         </CardFooter>
       </Card>
