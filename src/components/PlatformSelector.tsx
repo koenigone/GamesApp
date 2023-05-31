@@ -8,21 +8,32 @@ import {
 } from "@chakra-ui/react";
 import { BsChevronBarDown } from "react-icons/bs";
 import usePlatforms from "../hooks/usePlatforms";
+import { Platforms } from "../hooks/useGames";
 
-function PlatfromSelector() {
+interface Props {
+  onSelectPlatform: (platform: Platforms) => void;
+  selectedPlatform: Platforms | null;
+}
+
+function PlatfromSelector({ onSelectPlatform, selectedPlatform }: Props) {
   const { data, error } = usePlatforms();
 
   if (error) return null;
 
   return (
-    <HStack margin='0px 20px'>
+    <HStack margin="0px 20px">
       <Menu>
         <MenuButton as={Button} rightIcon={BsChevronBarDown}>
-          Platforms
+          {selectedPlatform?.name || "Platfroms"}
         </MenuButton>
         <MenuList>
-          {data.map((item) => (
-            <MenuItem key={item.id}>{item.name}</MenuItem>
+          {data.map((platform) => (
+            <MenuItem
+              onClick={() => onSelectPlatform(platform)}
+              key={platform.id}
+            >
+              {platform.name}
+            </MenuItem>
           ))}
         </MenuList>
       </Menu>

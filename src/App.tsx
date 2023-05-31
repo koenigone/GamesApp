@@ -4,11 +4,15 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
+import { Platforms } from "./hooks/useGames";
 import PlatfromSelector from "./components/PlatformSelector";
-import './Scrollbar-custom.css'
+import "./Scrollbar-custom.css";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platforms | null>(
+    null
+  );
 
   return (
     <>
@@ -35,8 +39,14 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <PlatfromSelector />
-          <GameGrid selectedGenre={selectedGenre} />
+          <PlatfromSelector
+            onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+            selectedPlatform={selectedPlatform}
+          />
+          <GameGrid
+            selectedGenre={selectedGenre}
+            selectedPlatform={selectedPlatform}
+          />
         </GridItem>
       </Grid>
     </>
