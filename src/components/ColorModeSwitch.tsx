@@ -1,17 +1,25 @@
-import { Switch, HStack, Text, useColorMode } from "@chakra-ui/react";
+import { Button, HStack, useColorMode } from "@chakra-ui/react";
+import { BsSunFill, BsMoonFill } from "react-icons/bs";
 
 function ColorModeSwitch() {
-  const { toggleColorMode, colorMode } = useColorMode();
-  const colorSwitch = colorMode === "light" ? "Dark theme" : "Light theme";
+  const { colorMode, toggleColorMode } = useColorMode();
+  const colorSwitch = colorMode === "light" ? <BsMoonFill /> : <BsSunFill />;
+  const backgroundSwitch = colorMode === "light" ? "#030a17" : "#ffff";
+  const fontSwitch = colorMode === "light" ? "white" : "black";
+
   return (
-    <HStack padding="20px">
-      <Text fontSize="14px">{colorSwitch}</Text>
-      <Switch
-        id="email-alerts"
-        isChecked={colorMode === "light"}
-        onChange={toggleColorMode}
-      />
-    </HStack>
+    <>
+      <HStack>
+        <Button
+          borderRadius={50}
+          onClick={toggleColorMode}
+          color={fontSwitch}
+          backgroundColor={backgroundSwitch}
+        >
+          {colorSwitch}
+        </Button>
+      </HStack>
+    </>
   );
 }
 
