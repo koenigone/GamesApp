@@ -22,17 +22,17 @@ function GenreList({ onSelectGenre, selectedGenre }: Props) {
   return (
     <List>
       {data.map((genre) => (
-        <ListItem key={genre.id} paddingY="7px">
-          <HStack spacing={5}>
+        <ListItem key={genre.id} paddingY="7px" paddingX="20px">
+          <HStack spacing={4}>
             <Image
               src={genre.image_background}
-              boxSize="33px"
-              borderRadius={8}
+              boxSize="35px"
+              borderRadius={10}
             />
             <Button
               fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
               onClick={() => onSelectGenre(genre)}
-              fontSize="sm"
+              fontSize="md"
               variant="link"
             >
               {genre.name}

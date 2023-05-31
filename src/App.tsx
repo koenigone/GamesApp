@@ -4,6 +4,8 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
+import PlatfromSelector from "./components/PlatformSelector";
+import './Scrollbar-custom.css'
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
@@ -14,11 +16,11 @@ function App() {
         fontFamily="sans-serif"
         templateAreas={{
           base: `"main" "nav"`,
-          lg: `"nav nav" "main aside"`,
+          lg: `"nav nav" "aside main"`,
         }}
         templateColumns={{
           base: "1fr",
-          lg: "1fr 200px",
+          lg: "200px 1fr",
         }}
       >
         <GridItem area="nav">
@@ -33,6 +35,7 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
+          <PlatfromSelector />
           <GameGrid selectedGenre={selectedGenre} />
         </GridItem>
       </Grid>
