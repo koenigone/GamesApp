@@ -1,7 +1,9 @@
 import {
   Button,
   HStack,
+  Img,
   Menu,
+  Text,
   MenuButton,
   MenuItem,
   MenuList,
@@ -32,7 +34,7 @@ function PlatfromSelector({ onSelectPlatform, selectedPlatform }: Props) {
               onClick={() => onSelectPlatform(platform)}
               key={platform.id}
             >
-              {platform.name}
+              {platform.name === "PlayStation" ? "" : platform.name}
             </MenuItem>
           ))}
         </MenuList>
